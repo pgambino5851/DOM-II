@@ -163,6 +163,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+a {
+  padding: 1rem;
+  border-radius: 1rem;
+}
 .container {
   max-width: 800px;
   width: 100%;

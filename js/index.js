@@ -4,10 +4,13 @@
 let navLinks = document.querySelectorAll(".nav-link");
 
 navLinks.forEach(function(element){
-    element.addEventListener('mouseenter', function(){
+    element.addEventListener('mouseenter', function(e){
         this.style.color = 'white';
         this.style.backgroundColor = 'black';
         
+    })
+    element.addEventListener('click', function(e){
+        e.preventDefault();
     })
 })
 
@@ -64,21 +67,50 @@ window.addEventListener('load', function(){
 let mainContentImgArr = document.querySelectorAll('.img-fluid');
 console.log(mainContentImgArr);
 
-mainContentImgArr[0].addEventListener('dblclick', function(){
+mainContentImgArr[0].addEventListener('dblclick', function(e){
     let temp = mainContentImgArr[0].src;
     mainContentImgArr[0].setAttribute('src', mainContentImgArr[1].src);
     mainContentImgArr[1].setAttribute('src', temp);
+    e.stopPropagation();
 })
 
 mainContentImgArr[1].addEventListener('dblclick', function(){
     let temp = mainContentImgArr[1].src;
     mainContentImgArr[1].setAttribute('src', mainContentImgArr[0].src);
     mainContentImgArr[0].setAttribute('src', temp);
+    e.stopPropagation();
 })
 
-//Fun Bus Event Listener
-let funBus = document.querySelector(".fun-bus-img");
-console.log(funBus);
-funBus.addEventListener('drag', function(){
-    alert("This bus ain't moving!");
+//Main Content Text Event Listeners
+let mainContentTextArr = document.querySelectorAll('.text-content')
+console.log(mainContentTextArr);
+mainContentTextArr.forEach(function(element){
+    element.addEventListener('dblclick', function(e){
+        element.style.color = 'white';
+        element.style.backgroundColor = 'black';
+        element.style.borderRadius = '.5rem';
+        e.stopPropagation();
+    })
+    
 })
+// mainContentTextArr.forEach(function(element){
+//     console.log(element);
+// })
+
+//Fun Bus Event Listener
+let funBus = document.querySelector('.fun-bus-img')
+console.log(funBus[0]);
+// funBus.addEventListener('drag', function(e){
+//     alert("This bus ain't moving!");
+window.addEventListener('keyup', function(e){
+    console.log(e.key);
+    if(e.key === "q"){
+        console.log(funBus.style);
+        funBus.style.display = 'none'
+    }
+
+    if(e.key === 'r'){
+        funBus.style.display = 'inline-block';
+    }
+})   
+// })
